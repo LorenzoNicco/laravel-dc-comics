@@ -1,17 +1,7 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.app')
 
-        <title>Laravel DC Comics</title>
+@section('content')
+    <h1>Comics</h1>
 
-        {{-- Includiamo gli assets con la direttiva @vite --}}
-        @vite('resources/js/app.js')
-    </head>
-    <body>
-
-
-
-    </body>
-</html>
+    <a href="{{ route('comics.index') }}" class="btn btn-primary">Visualizza tutti i fumetti</a>
+@endsection
