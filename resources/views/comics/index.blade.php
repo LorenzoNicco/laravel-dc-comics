@@ -24,11 +24,9 @@
                     <div class="card-body">
                         <h5 class="card-title">{{ $singleComic->title }}</h5>
 
-                        <p class="card-text">{{ $singleComic->series }}</p>
+                        <p class="card-text">Serie: {{ $singleComic->series }}</p>
 
                         <p>Prezzo: {{ $singleComic->price }} euro</p>
-
-                        <p>Serie: {{ $singleComic->series }}</p>
                     </div>
 
                     <a href="{{ route('comics.show', $singleComic->id) }}" class="btn btn-primary">Più Dettagli</a>
