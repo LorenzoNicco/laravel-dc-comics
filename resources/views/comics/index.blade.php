@@ -26,6 +26,8 @@
 
                         <p class="card-text">{{ $singleComic->series }}</p>
                     </div>
+
+                    <a href="{{ route('comics.show', $singleComic->id) }}" class="btn btn-primary">Più Dettagli</a>
               </div>
             @endforeach
         </div>
