@@ -40,7 +40,7 @@
 
                 <div class="mb-3 form-check">
                     <label for="price" class="form-label">Prezzo</label>
-                    <input type="text" class="form-control w-100" id="price" name="price" placeholder="Inserisci un prezzo con la virgola">
+                    <input type="text" class="form-control w-100" id="price" name="price" placeholder="Inserisci un prezzo con il punto">
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
