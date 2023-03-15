@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row justify-content-between">
             @foreach ($comics as $singleComic)
-                <div class="card col-4 mb-3" style="width: 18rem;">
+                <div class="card col-4 mb-3 py-2" style="width: 18rem;">
                     <img src="{{ $singleComic->thumb }}" class="card-img-top" alt="...">
 
                     <div class="card-body">
@@ -25,7 +25,14 @@
                     
                     <a href="{{ route('comics.show', $singleComic->id) }}" class="btn btn-primary mb-2">Più Dettagli</a>
 
-                    <a href="{{ route('comics.edit', $singleComic->id) }}" class="btn btn-warning">Modifica</a>
+                    <a href="{{ route('comics.edit', $singleComic->id) }}" class="btn btn-warning mb-2">Modifica</a>
+
+                    <form action="{{ route('comics.destroy', $singleComic->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <button type="submit" class="btn btn-danger w-100">Elimina</button>
+                    </form>
               </div>
             @endforeach
         </div>
