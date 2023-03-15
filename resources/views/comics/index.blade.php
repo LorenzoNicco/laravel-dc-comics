@@ -22,8 +22,10 @@
 
                         <p>Prezzo: {{ $singleComic->price }} euro</p>
                     </div>
+                    
+                    <a href="{{ route('comics.show', $singleComic->id) }}" class="btn btn-primary mb-2">Più Dettagli</a>
 
-                    <a href="{{ route('comics.show', $singleComic->id) }}" class="btn btn-primary">Più Dettagli</a>
+                    <a href="{{ route('comics.edit', $singleComic->id) }}" class="btn btn-warning">Modifica</a>
               </div>
             @endforeach
         </div>
