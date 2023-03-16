@@ -10,16 +10,8 @@
         @vite('resources/js/app.js')
     </head>
     <body>
-        <header class="text-center">
-            HEADER
-        </header>
-
         <main>
             @yield('content')
         </main>
-
-        <footer class="text-center">
-            FOOTER
-        </footer>
     </body>
 </html>

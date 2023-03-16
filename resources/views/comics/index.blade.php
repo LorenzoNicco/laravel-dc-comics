@@ -4,11 +4,13 @@
     <h1 class="text-center">Lista fumetti</h1>
 
     <div class="container my-3">
-        <nav class="row">
-            <a href="{{ route('home') }}" class="col btn btn-primary">Torna alla Home</a>
+        <nav class="row justify-content-around">
+            <a href="{{ route('home') }}" class="col-4 btn btn-primary">Torna alla Home</a>
+
+            <a href="{{ route('comics.create') }}" class="btn btn-primary col-4">Aggiungi un fumetto</a>
         </nav>
     </div>
-
+    
     <div class="container">
         <div class="row justify-content-between">
             @foreach ($comics as $singleComic)
@@ -27,10 +29,10 @@
 
                     <a href="{{ route('comics.edit', $singleComic->id) }}" class="btn btn-warning mb-2">Modifica</a>
 
-                    <form action="{{ route('comics.destroy', $singleComic->id) }}" method="POST">
+                    <form onsubmit="return confirm('Confermi l\'eliminazione del file?')" action="{{ route('comics.destroy', $singleComic->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
-
+    
                         <button type="submit" class="btn btn-danger w-100">Elimina</button>
                     </form>
               </div>
