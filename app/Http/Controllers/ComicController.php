@@ -114,6 +114,9 @@ class ComicController extends Controller
     {
         $comic = Comic::findOrFail($id);
         $data = $request->all();
+
+        $this->validateData($data);
+        
         $comic->update($data);
         $comic->save();
 
