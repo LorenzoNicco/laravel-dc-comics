@@ -21,6 +21,9 @@ class ComicController extends Controller
             'sale_date' => 'required|date',
             'type' => 'required|string',
             'price' => 'required|numeric|decimal:2',
+        ], [
+            'title.required' => 'Ci vuole un titolo',
+            'price.numeric' => 'Il prezzo va scritto in numeri, non in lettere'
         ]) -> validate();
     }
 
@@ -116,7 +119,7 @@ class ComicController extends Controller
         $data = $request->all();
 
         $this->validateData($data);
-        
+
         $comic->update($data);
         $comic->save();
 
