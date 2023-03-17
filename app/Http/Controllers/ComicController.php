@@ -9,23 +9,26 @@ use App\Models\Comic;
 
 // utilities
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+use App\Http\Requests\ComicRequest;
 
 class ComicController extends Controller
 {
-    private function validateData($data) {
-        $validator = Validator::make($data, [
-            'title' => 'required|string',
-            'description' => 'nullable',
-            'thumb' => 'required|string',
-            'series' => 'required|string',
-            'sale_date' => 'required|date',
-            'type' => 'required|string',
-            'price' => 'required|numeric|decimal:2',
-        ], [
-            'title.required' => 'Ci vuole un titolo',
-            'price.numeric' => 'Il prezzo va scritto in numeri, non in lettere'
-        ]) -> validate();
-    }
+    // validazione versione 1
+    // private function validateData($data) {
+    //     $validator = Validator::make($data, [
+    //         'title' => 'required|string',
+    //         'description' => 'nullable',
+    //         'thumb' => 'required|string',
+    //         'series' => 'required|string',
+    //         'sale_date' => 'required|date',
+    //         'type' => 'required|string',
+    //         'price' => 'required|numeric|decimal:2',
+    //     ], [
+    //         'title.required' => 'Ci vuole un titolo',
+    //         'price.numeric' => 'Il prezzo va scritto in numeri, non in lettere'
+    //     ]) -> validate();
+    // }
 
     /**
      * Display a listing of the resource.
@@ -58,11 +61,12 @@ class ComicController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
-        $data = $request->all();
+        $data = $request->validated();
 
-        $this->validateData($data);
+        // validazione versione 1
+        // $this->validateData($data);
 
         $singleComic = new Comic();
         $singleComic->title = $data['title'];
@@ -113,12 +117,13 @@ class ComicController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ComicRequest $request, $id)
     {
         $comic = Comic::findOrFail($id);
-        $data = $request->all();
+        $data = $request->validated();
 
-        $this->validateData($data);
+        // validazione versione 1
+        // $this->validateData($data);
 
         $comic->update($data);
         $comic->save();
