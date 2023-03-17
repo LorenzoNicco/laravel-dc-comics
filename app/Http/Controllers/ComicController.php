@@ -7,8 +7,23 @@ use Illuminate\Http\Request;
 // models
 use App\Models\Comic;
 
+// utilities
+use Illuminate\Support\Facades\Validator;
+
 class ComicController extends Controller
 {
+    private function validateData($data) {
+        $validator = Validator::make($data, [
+            'title' => 'required|string',
+            'description' => 'nullable',
+            'thumb' => 'required|string',
+            'series' => 'required|string',
+            'sale_date' => 'required|date',
+            'type' => 'required|string',
+            'price' => 'required|numeric|decimal:2',
+        ]) -> validate();
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -43,6 +58,8 @@ class ComicController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+
+        $this->validateData($data);
 
         $singleComic = new Comic();
         $singleComic->title = $data['title'];
